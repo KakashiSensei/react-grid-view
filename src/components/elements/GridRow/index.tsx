@@ -41,7 +41,7 @@ class GridRow extends React.Component<IProps> {
     const tdArray = mergedData.map((child, key) => {
       return (
         <td className="gv-td" key={key}>
-          {child.data}
+          {child.column.render ? child.column.render(child.data) : child.data}
         </td>
       );
     });

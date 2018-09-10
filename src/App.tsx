@@ -6,7 +6,7 @@ class App extends React.Component {
     {
       dataIndex: "name",
       render: (text: any) => <a href="javascript:;">{text}</a>,
-      title: "Name",
+      title: "Name"
     },
     {
       dataIndex: "age",
