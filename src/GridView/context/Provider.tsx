@@ -2,7 +2,7 @@ import Context from ".";
 import * as React from "react";
 
 interface IProps {
-  state: any;
+  value: any;
 }
 class MyProvider extends React.Component<IProps> {
   constructor(props: IProps) {
@@ -11,7 +11,7 @@ class MyProvider extends React.Component<IProps> {
 
   public render() {
     return (
-      <Context.Provider value={this.props.state}>
+      <Context.Provider value={this.props.value}>
         {this.props.children}
       </Context.Provider>
     );

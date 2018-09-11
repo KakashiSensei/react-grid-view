@@ -11,12 +11,14 @@ class GridHeader extends React.Component<IProps> {
     return (
       <Consumer>
         {(value: any) => {
+          
           return (
             <tbody>
               <tr>
                 {value.column.map((headerData: any, key: number) => {
+                  const isSortable: boolean = headerData.isSortable || false;
                   return (
-                    <th className={classMerged} key={key}>
+                    <th className={classMerged} key={key} onClick={isSortable ? this.toggleSort.bind(this, headerData, value) : this.voidFunction}>
                       {headerData.title}
                     </th>
                   );
@@ -28,6 +30,15 @@ class GridHeader extends React.Component<IProps> {
       </Consumer>
     );
   }
+
+  private voidFunction = () => {
+    return;
+  };
+
+  private toggleSort = (headerData: any, value: any) => {
+    const dataIndex:string = headerData.dataIndex;
+    value.updateSort(dataIndex);
+  };
 }
 
 export default GridHeader;
