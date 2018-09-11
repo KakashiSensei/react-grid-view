@@ -1,5 +1,5 @@
 import * as React from "react";
-import Consumer from "../../Context/Consumer";
+import Consumer from "../../context/Consumer";
 import "./style.css";
 
 class GridHeader extends React.Component {

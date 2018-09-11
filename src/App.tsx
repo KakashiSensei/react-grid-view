@@ -1,5 +1,5 @@
 import * as React from "react";
-import GridView from "./components/GridView";
+import { GridTable, GridHeader, GridRow } from "./GridView";
 
 class App extends React.Component {
   private columns: any = [
@@ -27,9 +27,10 @@ class App extends React.Component {
 
   public render() {
     return (
-      <div>
-        <GridView column={this.columns} dataInput={this.data} />
-      </div>
+      <GridTable column={this.columns} data={this.data}>
+        <GridHeader />
+        <GridRow />
+      </GridTable>
     );
   }
 }
