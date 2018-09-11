@@ -5,9 +5,10 @@ import "./style.css";
 interface IProps {
   column: any[];
   data: any[];
+  className?: string;
 }
 
-interface IState { 
+interface IState {
   column: any[];
   data: any[];
 }
@@ -15,14 +16,16 @@ interface IState {
 class GridTable extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
+    const { className, ...otherProps } = props;
     this.state = {
-      ...props
-    }
+      ...otherProps
+    };
   }
   public render() {
+    const className = `gv-table ${this.props.className}`;
     return (
       <Provider state={this.state}>
-        <table className="gv-table">{this.props.children}</table>
+        <table className={className}>{this.props.children}</table>
       </Provider>
     );
   }

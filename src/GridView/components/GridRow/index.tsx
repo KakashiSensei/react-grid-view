@@ -2,7 +2,11 @@ import * as React from "react";
 import Consumer from "../../context/Consumer";
 import "./style.css";
 
-class GridRow extends React.Component {
+interface IProps{
+  className?: string;
+}
+
+class GridRow extends React.Component<IProps> {
   public render() {
     const mergedData: any[] = [];
     return (
@@ -39,8 +43,9 @@ class GridRow extends React.Component {
     }
 
     const tdArray = mergedData.map((child, key) => {
+      const className = `gv-td ${this.props.className}`;
       return (
-        <td className="gv-td" key={key}>
+        <td className={className} key={key}>
           {child.column.render ? child.column.render(child.data) : child.data}
         </td>
       );

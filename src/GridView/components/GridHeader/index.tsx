@@ -2,9 +2,12 @@ import * as React from "react";
 import Consumer from "../../context/Consumer";
 import "./style.css";
 
-class GridHeader extends React.Component {
-
+interface IProps {
+  className?: string;
+}
+class GridHeader extends React.Component<IProps> {
   public render() {
+    const classMerged = `gv-tr ${this.props.className}`;
     return (
       <Consumer>
         {(value: any) => {
@@ -13,7 +16,7 @@ class GridHeader extends React.Component {
               <tr>
                 {value.column.map((headerData: any, key: number) => {
                   return (
-                    <th className="gv-tr" key={key}>
+                    <th className={classMerged} key={key}>
                       {headerData.title}
                     </th>
                   );

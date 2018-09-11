@@ -1,5 +1,6 @@
 import * as React from "react";
 import { GridTable, GridHeader, GridRow } from "./GridView";
+import "./App.css";
 
 class App extends React.Component {
   private columns: any = [
@@ -27,9 +28,9 @@ class App extends React.Component {
 
   public render() {
     return (
-      <GridTable column={this.columns} data={this.data}>
-        <GridHeader />
-        <GridRow />
+      <GridTable className="customTable" column={this.columns} data={this.data}>
+        <GridHeader className="customClass" />
+        <GridRow className="customStyle" />
       </GridTable>
     );
   }
