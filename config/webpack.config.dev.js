@@ -141,6 +141,15 @@ module.exports = {
             },
           },
           {
+            test: /\.csv$/,
+            loader: 'csv-loader',
+            options: {
+              dynamicTyping: true,
+              header: true,
+              skipEmptyLines: true
+            }
+          },
+          {
             test: /\.(js|jsx|mjs)$/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
