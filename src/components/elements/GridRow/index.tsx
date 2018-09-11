@@ -1,29 +1,29 @@
 import * as React from "react";
+import Consumer from "../../Context/Consumer";
 import "./style.css";
 
-interface IProps {
-  column: any[];
-  data: any[];
-}
-
-class GridRow extends React.Component<IProps> {
+class GridRow extends React.Component {
   public render() {
     const mergedData: any[] = [];
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.props.data.length; i++) {
-      mergedData.push({
-        column: this.props.column,
-        data: this.props.data[i]
-      });
-    }
-    // tslint:disable-next-line:no-console
-    console.log("mergedData", mergedData);
     return (
-      <tbody>
-        {mergedData.map((child: any, key: number) => {
-          return this.rowElement(child, key);
-        })}
-      </tbody>
+      <Consumer>
+        {(value: any) => {
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < value.data.length; i++) {
+            mergedData.push({
+              column: value.column,
+              data: value.data[i]
+            });
+          }
+          return (
+            <tbody>
+              {mergedData.map((child: any, key: number) => {
+                return this.rowElement(child, key);
+              })}
+            </tbody>
+          );
+        }}
+      </Consumer>
     );
   }
 

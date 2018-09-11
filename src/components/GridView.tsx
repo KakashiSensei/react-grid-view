@@ -2,6 +2,7 @@ import * as React from "react";
 import GridHeader from "./elements/GridHeader";
 import GridRow from "./elements/GridRow";
 import GridTable from "./elements/GridTable";
+import Provider from "./Context/Provider";
 
 interface IColumn {
   title: string;
@@ -14,23 +15,27 @@ interface IProps {
 }
 
 interface IState {
-  dataModified: [any];
+  data: any[];
+  column: any[];
 }
 
 class GridView extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      dataModified: this.props.dataInput
+      data: this.props.dataInput,
+      column: this.props.column
     };
   }
 
   public render() {
     return (
-      <GridTable>
-        <GridHeader column={this.props.column} />
-        <GridRow column={this.props.column} data={this.state.dataModified} />
-      </GridTable>
+      <Provider state={this.state}>
+        <GridTable>
+          <GridHeader/>
+          <GridRow/>
+        </GridTable>
+      </Provider>
     );
   }
 }
